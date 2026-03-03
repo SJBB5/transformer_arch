@@ -26,7 +26,7 @@ processed = process_text(book)
 tokenizer = Tokenizer(processed)
 
 # config
-cfg = Config(d_vocab=tokenizer.vocab_size, n_ctx=25)
+cfg = Config(d_vocab=tokenizer.vocab_size, n_ctx=64)
 
 # convert to tensor, so pass into function works
 full_data_tensor = torch.tensor(tokenizer.encode(processed), dtype=torch.long)
@@ -39,7 +39,7 @@ loss_list = []
 iter_list = []
 
 #  Loop
-for i in range(1000):
+for i in range(10000):
     # get sequence
     xb, yb = get_batch(full_data_tensor, n_ctx=cfg.n_ctx)
     
@@ -72,5 +72,5 @@ torch.save(model.state_dict(), "model.pt")
 # have model generate text
 model.eval()
 sample = "hey franklin"
-max_iterations = 100
+max_iterations = 10
 print(model.generate(sample, max_iterations, tokenizer, cfg))

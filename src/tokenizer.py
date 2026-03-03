@@ -1,17 +1,21 @@
 import unicodedata
 
+# word tokenizer
 class Tokenizer:
     def __init__(self, text: str):
-        chars = sorted(list(set(text)))
-        self.vocab_size = len(chars)
-        self.stoi = { ch:i for i,ch in enumerate(chars) }
-        self.itos = { i:ch for i,ch in enumerate(chars) }
+        words = text.split(" ")
+        vocab = sorted(set(words))
+
+        self.vocab_size = len(vocab)
+        self.stoi = {word: i for i, word in enumerate(vocab)}
+        self.itos = {i: word for i, word in enumerate(vocab)}
         
     def encode(self, s: str):
-        return [self.stoi[c] for c in s]
+        words = s.split(" ")
+        return [self.stoi[word] for word in words]
 
     def decode(self, l: list):
-        return ''.join([self.itos[i] for i in l])
+        return " ".join([self.itos[i] for i in l])
 
 def process_text(
 	text: str,

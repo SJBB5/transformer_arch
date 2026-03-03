@@ -15,7 +15,6 @@ class MLP(nn.Module):
         x = self.fc2(x)
         return x
 
-
 def get_M(n):
     ones = torch.ones((n, n))
    
