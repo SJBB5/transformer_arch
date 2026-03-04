@@ -16,5 +16,5 @@ sample output from untrained model:
 WRITEUP:
 
 CONTRIBUTIONS:
-
+We worked equally on the implementation. In class, we worked on one computer and contributed equally to the implementation. The work was moved to this git repo recently just to organize our work better; the commits on this repo is not indicative of the contributions to the project.
 
