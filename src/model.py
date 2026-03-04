@@ -76,10 +76,10 @@ class Transformer(nn.Module):
                 logits = self.forward(idx_cond)
 
             last_logits = logits[-1, :]
-            next_token = torch.argmax(last_logits, dim=-1, keepdim=True)
+            # next_token = torch.argmax(last_logits, dim=-1, keepdim=True)
 
-            # probs = F.softmax(last_logits, dim=-1)
-            # next_token = torch.multinomial(probs, num_samples=1)
+            probs = F.softmax(last_logits, dim=-1)
+            next_token = torch.multinomial(probs, num_samples=1)
 
             input_ids = torch.cat((input_ids, next_token), dim=0)
         #return generated text
